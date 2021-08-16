@@ -1,0 +1,52 @@
+ALGORITHM NoDoublon_solution1_problem1
+VAR
+n,m,i,j,NoDoublon : integer := 0;
+ array1 : ARRAY_OF integer[n];
+ array2 : ARRAY_OF integer[m];
+ found : BOOLEAN := FALSE;
+
+BEGIN
+    write('Veuillez saisir la taille de votre tableau 1:');
+    read(n);
+    FOR i FROM 0 TO n-1 STEP 1  DO
+        write('veuillez saisir la valeur de votre cellule '+i)
+        read(array1[i])
+    END_FOR
+
+    write('Veuillez saisir la taille de votre tableau 2:');
+    read(m);
+    FOR j FROM 0 TO m-1 STEP 1  DO
+        write('veuillez saisir la valeur de votre cellule '+j)
+        read(array2[j]);
+    END_FOR
+
+    IF (n >= m) THEN
+            FOR i FROM 0 TO n-1 STEP 1  DO
+                FOR j FROM 0 TO m-1 STEP 1  DO
+                    IF (array1[i] == array2[j]) THEN
+                        found := TRUE;
+                    END_IF
+                END_FOR
+
+                IF (found == FALSE) THEN
+                    NoDoublon := NoDoublon + array1[i];
+                END_IF
+            END_FOR
+            write('La somme des éléments distinct est: '+NoDoublon);
+    ELSE 
+
+          FOR j FROM 0 TO m-1 STEP 1  DO
+                FOR i FROM 0 TO n-1 STEP 1  DO
+                        IF (array2[j] == array1[i]) THEN
+                                found := TRUE;
+                            END_IF
+                        END_FOR
+
+                        IF (found == FALSE) THEN
+                            NoDoublon := NoDoublon + array2[j];
+                        END_IF
+                END_FOR
+                    write('La somme des éléments distinct est: '+NoDoublon);
+
+    END_IF
+END

@@ -1,0 +1,34 @@
+ALGORITHM NoDoulon_problem1_solution2
+VAR
+   htab1 HASH_TABLE<integer,integer>;
+   htab2 HASH_TABLE<integer,integer>;
+   value,i,j,m,n,Doublon : INTEGER;
+BEGIN
+     write('Veuillez saisir la taille de votre hashtable 1:');
+    read(n);
+    FOR i FROM 0 TO n-1 STEP 1  DO
+        write('veuillez saisir la valeur de votre valeur'+i)
+        read(value);
+        htab1.insert(i,value);
+    END_FOR
+
+     write('Veuillez saisir la taille de votre hashtable 2:');
+    read(m);
+
+    FOR j FROM 0 TO m-1 STEP 1  DO
+        write('veuillez saisir la valeur de votre valeur'+i);
+        read(value);
+        htab2.insert(j,value);
+    END_FOR
+
+                FOR j FROM 0 TO m-1 STEP 1  DO
+                    IF (htab1.search(htab2.get(j)) == TRUE ) THEN
+                        Doublon := Doublon + htab2.get(j);
+                    END_IF
+                END_FOR
+            write('La somme des éléments distinct est: '+Doublon);
+
+
+
+
+END
